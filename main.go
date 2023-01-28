@@ -1,25 +1,43 @@
 package main
 
 import (
+	"crawler/services"
 	"fmt"
+	"os"
+	"strconv"
 
-	"github.com/manifoldco/promptui"
+	"github.com/erikgeiser/promptkit/selection"
+	"github.com/erikgeiser/promptkit/textinput"
 )
 
 func main() {
-	base := promptui.Select{
-		Label: "Select Conference",
-		Items: []string{"AAAI", "CVPR", "ECCV", "ICCV", "NIPS",
-			"ICLR"},
-	}
+	sp := selection.New("What do you pick?", []string{"AAAI", "ECCV", "ICCV", "CVPR", "NIPS"})
 
-	_, result, err := base.Run()
+	sp.PageSize = 5
 
+	choice, err := sp.RunPrompt()
 	if err != nil {
-		fmt.Printf("Prompt failed %v\n", err)
-		return
+		fmt.Printf("Error: %v\n", err)
+
+		os.Exit(1)
 	}
 
-	fmt.Printf("You choose %q\n", result)
+	input := textinput.New("Enter Year")
+	input.InitialValue = "2022"
+	input.Placeholder = "Year cannot be empty"
+
+	year, err := input.RunPrompt()
+	if err != nil {
+		panic("input valid")
+	}
+
+	res, err := strconv.Atoi(year)
+	if err != nil {
+		panic("Year invalid")
+	}
+
+	if choice == "NIPS" {
+		services.PipeLine(services.NIPS, res, choice)
+	}
 
 }

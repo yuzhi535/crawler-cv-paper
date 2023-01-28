@@ -1,14 +1,12 @@
-package main
+package services
 
 import (
 	"crawler/models"
-	"fmt"
 	"log"
 	"os"
 	"strconv"
 
 	"github.com/anaskhan96/soup"
-	"github.com/xuri/excelize/v2"
 )
 
 func NIPS(year int) []models.Paper {
@@ -46,31 +44,6 @@ func NIPS(year int) []models.Paper {
 		id++
 	}
 	return papers
-}
-
-func Save2Excel(base string, year int, papers []models.Paper) {
-	f := excelize.NewFile()
-	defer func() {
-		if err := f.Close(); err != nil {
-			fmt.Println(err)
-		}
-	}()
-	// Set value of a cell.
-	f.SetColWidth("Sheet1", "B", "C", 60)
-	for id, paper := range papers {
-		f.SetCellValue("Sheet1", "A"+strconv.Itoa(id+1), id+1)
-		f.SetCellValue("Sheet1", "B"+strconv.Itoa(id+1), paper.PaperName)
-		f.SetCellValue("Sheet1", "C"+strconv.Itoa(id+1), paper.URL)
-	}
-
-	f.InsertRows("Sheet1", 1, 1)
-	f.SetCellValue("Sheet1", "B1", "paper title")
-	f.SetCellValue("Sheet1", "C1", "paper url")
-
-	// Save spreadsheet by the given path.
-	if err := f.SaveAs(base + strconv.Itoa(year) + ".xlsx"); err != nil {
-		fmt.Println(err)
-	}
 }
 
 func main() {
