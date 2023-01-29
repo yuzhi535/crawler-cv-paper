@@ -38,6 +38,8 @@ func main() {
 
 	if choice == "NIPS" {
 		services.PipeLine(services.NIPS, res, choice)
+	} else if choice == "ECCV" {
+		services.PipeLine(services.ECCV, res, choice)
 	}
 
 }

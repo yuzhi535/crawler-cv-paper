@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/anaskhan96/soup"
+	"github.com/kinsey40/pbar"
 )
 
 func NIPS(year int) []models.Paper {
@@ -22,11 +23,20 @@ func NIPS(year int) []models.Paper {
 	var id = 0
 	var papers []models.Paper
 
-	f, err := os.OpenFile("testlogfile.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	f, err := os.OpenFile("NIPS"+strconv.Itoa(year)+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		os.Exit(-1)
 	}
 	log.SetOutput(f)
+
+	p, err := pbar.Pbar(links)
+	if err != nil {
+		panic(err)
+	}
+	// Alter pbar settings (e.g. add a description)
+	p.SetDescription("Pbar")
+	// Initialize just before for-loop
+	p.Initialize()
 
 	for _, link := range links {
 		title := link.FindStrict("div", "class", "maincardBody").Text()
@@ -42,11 +52,7 @@ func NIPS(year int) []models.Paper {
 		log.Println(f, "Number:"+strconv.Itoa(id)+" Title: "+title+" url: "+url)
 		papers = append(papers, models.Paper{PaperName: title, URL: url})
 		id++
+		p.Update()
 	}
 	return papers
-}
-
-func main() {
-	papers := NIPS(2022)
-	Save2Excel("NIPS", 2022, papers)
 }

@@ -34,6 +34,7 @@ require (
 require (
 	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
 	github.com/erikgeiser/promptkit v0.8.0
+	github.com/kinsey40/pbar v0.0.0-20190815161936-21f8229eaa8a
 	github.com/xuri/excelize/v2 v2.7.0
 	golang.org/x/net v0.5.0
 	golang.org/x/sys v0.4.0 // indirect

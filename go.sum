@@ -24,6 +24,8 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/erikgeiser/promptkit v0.8.0 h1:bvOzPs6RLyfRZDSgVWOghQEiBSRHQ3zmDdxcV8zOc+E=
 github.com/erikgeiser/promptkit v0.8.0/go.mod h1:QxyFbCrrj20PyvV5b+ckWPozbgX11s04GeRlmTCIMTo=
+github.com/kinsey40/pbar v0.0.0-20190815161936-21f8229eaa8a h1:Sn0FUsz+HHYf2ZwvGTmak6WtuG6FFoUpCYZ/bMC4W4I=
+github.com/kinsey40/pbar v0.0.0-20190815161936-21f8229eaa8a/go.mod h1:QwUrOchRIYL3j2lQBls246ox3I5JdnVlbsdVqrvg6kI=
 github.com/kylelemons/godebug v1.1.0/go.mod h1:9/0rRGxNHcop5bhtWyNeEfOS8JIWk580+fNqagV/RAw=
 github.com/lucasb-eyer/go-colorful v1.2.0 h1:1nnpGOrhyZZuNyfu1QjKiUICQ74+3FNCN69Aj6K7nkY=
 github.com/lucasb-eyer/go-colorful v1.2.0/go.mod h1:R4dSotOR9KMtayYi1e77YzuveK+i7ruzyGqttikkLy0=

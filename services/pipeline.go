@@ -8,5 +8,5 @@ import (
 func PipeLine(f func(int) []models.Paper, year int, base string) {
 	papers := f(year)
 	title := Save2Excel(base, year, papers)
-	fmt.Println("Done! the excel name is " + title)
+	fmt.Println("\nDone! the excel name is " + title)
 }
