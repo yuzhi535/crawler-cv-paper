@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/kinsey40/pbar"
 )
 
 func getCurrentYear() int {
@@ -74,6 +75,12 @@ func ECCV(year int) ([]models.Paper, error) {
 	}
 
 	var papers []models.Paper
+	p, err := pbar.Pbar(raw_papers.Nodes)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create pbar: %v", err)
+	}
+	p.SetDescription("Processing ECCV papers")
+	p.Initialize()
 	raw_papers.Each(func(i int, s *goquery.Selection) {
 		title := s.Text()
 		link, _ := s.Find("a").Attr("href")
@@ -82,6 +89,7 @@ func ECCV(year int) ([]models.Paper, error) {
 		log.Printf("Id: %d, Title: %s, pdf: %s \n", id, title, pdf)
 		paper := models.Paper{PaperName: title, URL: pdf}
 		papers = append(papers, paper)
+		p.Update()
 	})
 
 	return papers, nil

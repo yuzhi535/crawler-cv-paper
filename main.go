@@ -30,7 +30,6 @@ func main() {
 	if err != nil {
 		panic("input valid")
 	}
-	// year := "2024"
 
 	res, err := strconv.Atoi(year)
 	if err != nil {
@@ -40,10 +39,6 @@ func main() {
 	if choice == "NIPS" {
 		services.PipeLine(services.NIPS, res, choice)
 	} else if choice == "ECCV" {
-		_, err := services.ECCV(res)
-		if err != nil {
-			panic(err)
-		}
 		services.PipeLine(services.ECCV, res, choice)
 	}
 
