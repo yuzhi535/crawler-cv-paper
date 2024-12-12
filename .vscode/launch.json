@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "go",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/${input:programPath}",
+            "mode": "debug",
+            "args": [],
+            "showLog": true
+        }
+    ],
+    "inputs": [
+        {
+            "type": "pickString",
+            "id": "programPath",
+            "description": "Select the Go file to debug",
+            "options": [
+                "main.go",
+                "services/eccv.go",
+                "services/nips.go",
+                "services/pipeline.go"
+            ]
+        }
+    ]
+}

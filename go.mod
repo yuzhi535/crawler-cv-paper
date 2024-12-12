@@ -1,11 +1,14 @@
 module crawler
 
-go 1.19
+go 1.23
+
+toolchain go1.23.1
 
 require github.com/manifoldco/promptui v0.9.0
 
 require (
 	github.com/anaskhan96/soup v1.2.5 // indirect
+	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aymanbagabas/go-osc52 v1.2.1 // indirect
 	github.com/charmbracelet/bubbles v0.14.0 // indirect
@@ -26,16 +29,17 @@ require (
 	github.com/rivo/uniseg v0.4.3 // indirect
 	github.com/xuri/efp v0.0.0-20220603152613-6918739fd470 // indirect
 	github.com/xuri/nfp v0.0.0-20220409054826-5e722a1d9e22 // indirect
-	golang.org/x/crypto v0.5.0 // indirect
-	golang.org/x/term v0.4.0 // indirect
-	golang.org/x/text v0.6.0 // indirect
+	golang.org/x/crypto v0.27.0 // indirect
+	golang.org/x/term v0.24.0 // indirect
+	golang.org/x/text v0.18.0 // indirect
 )
 
 require (
+	github.com/PuerkitoBio/goquery v1.10.0
 	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
 	github.com/erikgeiser/promptkit v0.8.0
 	github.com/kinsey40/pbar v0.0.0-20190815161936-21f8229eaa8a
 	github.com/xuri/excelize/v2 v2.7.0
-	golang.org/x/net v0.5.0
-	golang.org/x/sys v0.4.0 // indirect
+	golang.org/x/net v0.29.0
+	golang.org/x/sys v0.25.0 // indirect
 )
