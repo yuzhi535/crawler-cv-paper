@@ -24,7 +24,7 @@ func NIPS(year int) ([]models.Paper, error) {
 		return nil, fmt.Errorf("status code error: %d %s", resp.StatusCode, resp.Status)
 	}
 
-	doc, err := goquery.NewDocumentFromReader(resp.Body)
+	contents, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse HTML: %v", err)
 	}
@@ -36,7 +36,7 @@ func NIPS(year int) ([]models.Paper, error) {
 	defer f.Close()
 	log.SetOutput(f)
 
-	links := doc.Find("div.maincard.narrower.poster")
+	links := contents.Find("div.maincard.narrower.poster")
 	if links.Length() == 0 {
 		log.Println("no posters found")
 		return nil, fmt.Errorf("no posters found")

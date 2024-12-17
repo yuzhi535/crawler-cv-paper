@@ -40,6 +40,7 @@ func main() {
 		services.PipeLine(services.NIPS, res, choice)
 	} else if choice == "ECCV" {
 		services.PipeLine(services.ECCV, res, choice)
+	} else if choice == "ICLR" {
+		services.PipeLine(services.ICLR, res, choice)
 	}
-
 }
